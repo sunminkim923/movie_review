@@ -2,6 +2,7 @@
   "name": "movie_review_project",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/movie.json",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

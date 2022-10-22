@@ -17,24 +17,21 @@ export default function Home() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    getMovieList();
+    // getMovieList();
   }, []);
 
   async function getMovieList() {
     try {
       const result = await axios({
         method: "get",
-        url: "https://openapi.naver.com/v1/search/movie.json",
+        url: "https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/movie.json",
         headers: {
-          "X-Naver-Client-Id": clientId,
-          "X-Naver-Client-Secret": clientSecret,
-          Host: "openapi.naver.com",
-          Accept: "*/*",
-          "User-Agent": "curl/7.49.1",
           "Access-Control-Allow-Origin": "*",
+          "X-Naver-Client-Id": "HfFdJg8CoER4nIqrd6pL",
+          "X-Naver-Client-Secret": "TsmSf6MrKl",
         },
         params: {
-          query: decodeURIComponent("괴물"),
+          query: "lalaland",
         },
       });
 
@@ -44,9 +41,10 @@ export default function Home() {
     }
   }
 
-  function onChangeName(event: ChangeEvent) {
-    setName(decodeURIComponent(event.target.value));
+  function onChangeName(event: ChangeEvent<HTMLInputElement>) {
+    setName(decodeURIComponent(event.currentTarget.value));
   }
+
   return (
     <div>
       {/*<Radio.Group defaultValue={null} onChange={onChangeNation}>*/}
