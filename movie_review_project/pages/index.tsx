@@ -1,5 +1,4 @@
 import axios from "axios";
-import dayjs from "dayjs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Input, Radio } from "antd";
 
@@ -13,6 +12,7 @@ export default function Home() {
 
   const apiKey = "b001a74fb346c75e6f384f6e8ca1a3a7";
   const [boxOfficeList, setBoxOfficeList] = useState([]);
+  const url = "";
 
   const [name, setName] = useState("");
 
@@ -21,21 +21,21 @@ export default function Home() {
   }, []);
 
   async function getMovieList() {
+    console.log(process.env.NEXT_PUBLIC_URL, "url");
     try {
       const result = await axios({
         method: "get",
-        url: "https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/search/movie.json",
+        url: `${process.env.NEXT_PUBLIC_URL}/search/movie.json`,
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "X-Naver-Client-Id": "HfFdJg8CoER4nIqrd6pL",
-          "X-Naver-Client-Secret": "TsmSf6MrKl",
+          "X-Naver-Client-Id": process.env.NEXT_PUBLIC_CLIENT_ID,
+          "X-Naver-Client-Secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
         },
         params: {
-          query: "lalaland",
+          query: "%EB%A6%AC%EB%B7%B0",
         },
       });
 
-      console.log(result);
+      console.log(result, "result");
     } catch (error) {
       console.log(error, "error");
     }
