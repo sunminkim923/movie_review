@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   async rewrites() {
     return [
       {
-        source: "/:path*",
-        destination: "https://openapi.naver.com/v1/search/:path*",
+        source: "/v1/search/movie.json/:path*",
+        destination: "https://openapi.naver.com/v1/search/movie.json/:path*",
       },
     ];
   },

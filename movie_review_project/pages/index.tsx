@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { Method } from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Button, Input, Radio } from "antd";
 
@@ -20,17 +20,16 @@ export default function Home() {
   }, []);
 
   async function getMovieList() {
-    console.log(process.env.NEXT_PUBLIC_URL, "url");
     try {
       const result = await axios({
         method: "get",
-        url: `${process.env.NEXT_PUBLIC_URL}/search/movie.json`,
+        url: `/v1/search/movie.json/`,
         headers: {
           "X-Naver-Client-Id": process.env.NEXT_PUBLIC_CLIENT_ID,
           "X-Naver-Client-Secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
         },
         params: {
-          query: "%EB%A6%AC%EB%B7%B0",
+          query: "lalaland",
         },
       });
 
