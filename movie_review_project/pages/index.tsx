@@ -12,7 +12,6 @@ export default function Home() {
 
   const apiKey = "b001a74fb346c75e6f384f6e8ca1a3a7";
   const [boxOfficeList, setBoxOfficeList] = useState([]);
-  const url = "";
 
   const [name, setName] = useState("");
 
