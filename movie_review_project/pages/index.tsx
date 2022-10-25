@@ -1,22 +1,10 @@
 import axios, { Method } from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Button, Input, Radio } from "antd";
-
-interface BoxOfficeList {
-  nation: string;
-}
+import { Button, Input } from "antd";
 
 export default function Home() {
-  const clientId = "HfFdJg8CoER4nIqrd6pL";
-  const clientSecret = "TsmSf6MrKl";
-
-  const apiKey = "b001a74fb346c75e6f384f6e8ca1a3a7";
-  const [boxOfficeList, setBoxOfficeList] = useState([]);
-
-  const [name, setName] = useState("");
-
   useEffect(() => {
-    // getMovieList();
+    getMovieList();
   }, []);
 
   async function getMovieList() {
@@ -29,7 +17,7 @@ export default function Home() {
           "X-Naver-Client-Secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
         },
         params: {
-          query: "lalaland",
+          query: "",
         },
       });
 
@@ -39,19 +27,9 @@ export default function Home() {
     }
   }
 
-  function onChangeName(event: ChangeEvent<HTMLInputElement>) {
-    setName(decodeURIComponent(event.currentTarget.value));
-  }
-
   return (
-    <div>
-      {/*<Radio.Group defaultValue={null} onChange={onChangeNation}>*/}
-      {/*  <Radio value={null}>전체</Radio>*/}
-      {/*  <Radio value="K">국내</Radio>*/}
-      {/*  <Radio value="F">해외</Radio>*/}
-      {/*</Radio.Group>*/}
-      <Input onChange={onChangeName} />
-      <Button onClick={() => getMovieList()}>검색</Button>
+    <div className="bg-red-400 flex justify-center min-h-screen">
+      <div className=" w-[70%] h-[300px] bg-neutral-700">테스트</div>
     </div>
   );
 }
