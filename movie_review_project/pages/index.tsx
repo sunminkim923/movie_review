@@ -4,24 +4,17 @@ import { Button, Input } from "antd";
 
 export default function Home() {
   useEffect(() => {
-    getMovieList();
+    getPopularMovieList();
   }, []);
 
-  async function getMovieList() {
+  async function getPopularMovieList() {
     try {
       const result = await axios({
         method: "get",
-        url: `/v1/search/movie.json/`,
-        headers: {
-          "X-Naver-Client-Id": process.env.NEXT_PUBLIC_CLIENT_ID,
-          "X-Naver-Client-Secret": process.env.NEXT_PUBLIC_CLIENT_SECRET,
-        },
-        params: {
-          query: "",
-        },
+        url: "/api/movie/popular",
       });
 
-      console.log(result, "result");
+      console.log(result);
     } catch (error) {
       console.log(error, "error");
     }
